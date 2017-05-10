@@ -22,8 +22,6 @@
 2017-05-10 04:11:54.079 [main] INFO  facebook.Main - inicializando app
 2017-05-10 04:12:41.495 [main] INFO  facebook.Main - inicializando app
 2017-05-10 04:15:18.125 [main] INFO  facebook.Main - inicializando app
-<<<<<<< HEAD
-=======
 2017-05-10 05:15:06.349 [main] INFO  facebook.Main - inicializando app
 2017-05-10 05:16:14.797 [main] INFO  facebook.Main - inicializando app
 2017-05-10 05:30:02.316 [main] INFO  facebook.Main - inicializando app
@@ -69,4 +67,7 @@
 2017-05-10 16:26:45.754 [main] INFO  facebook.Main - inicializando app
 2017-05-10 16:27:23.200 [main] INFO  facebook.Main - inicializando app
 2017-05-10 16:28:35.573 [main] INFO  facebook.Main - inicializando app
->>>>>>> refs/heads/mostrar_muro
+2017-05-10 16:33:39.615 [main] INFO  facebook.Main - inicializando app
+2017-05-10 16:33:59.184 [main] INFO  facebook.Main - inicializando app
+2017-05-10 16:57:47.216 [main] INFO  facebook.Main - inicializando app
+2017-05-10 17:00:56.408 [main] INFO  facebook.Main - inicializando app

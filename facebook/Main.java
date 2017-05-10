@@ -28,18 +28,11 @@ public class Main {
 	private static final String CONFIG_FILE = "facebook.properties";
 	private static final String APP_VERSION = "v1.0";
 	
-<<<<<<< HEAD
-	static String accessToken = "EAAOQH1flf1cBAGufZBq6xENQjYK11we1oXbZA1fWd7xCoH3ZCfWcZAQra5bzZC8cBXcv5ZAZBqZACGxNyFcoo5RTqUKo9W7vPwE7ZBa0N2zdhzSvaCjTrR58aDH2evjdJaKeF9wovrXKPwhdIqDERtZAhO8iYMmJG8ACoIaZC56xJQCbdDcfOOJMVSUUR8cmSZAaWdoZD";
-=======
 	static String accessToken = "EAAOQH1flf1cBAE40JCZBC1PSovsqUce7KTyrRfWFozKJnHrIYH2ZB1PsZCZCDAoA3vJbUW8tg0gk2PAUm6FHbmAD721VAAUu2HeSyGWEk0ZCBhLMDn2C4fFPtVCOBToSzT4eqEdRdRxJPmo6s19YU8hKZBaMhjflIWdXlMTIolJ0cFZAGLO8BOZCV9iOeJracP8ZD";
->>>>>>> refs/heads/mostrar_muro
     static String appID = "1002889223176023";
     static String appSecret = "bd66801e7a57990f084537b2e97d394f";
     
 	public static void main(String[] args) throws FacebookException {
-<<<<<<< HEAD
-		
-=======
 	/*
 	 Mostrar Log
 	 Mostrar NewsFeed--
@@ -50,20 +43,114 @@ public class Main {
 	 Publicar Link--
 	 Modificar Parámetros
 	 */
->>>>>>> refs/heads/mostrar_muro
+    Scanner scanner = new Scanner(System.in);
 	logger.info("inicializando app");
 	Facebook facebook = new FacebookFactory().getInstance();
 	facebook.setOAuthAppId(appID, appSecret);
     facebook.setOAuthAccessToken(new AccessToken(accessToken,null));	
-<<<<<<< HEAD
-	facebook.postStatusMessage("Hello World from Facebook4J2.");
-=======
 	//facebook.setOAuthPermissions(CONFIG_FILE);
     facebook.setOAuthPermissions("read_stream, user_likes, user_posts");
     facebook.getPermissions().toString();
-    
-    
 
+    while(true){
+    System.out.format("Simple Facebook client %s\n\n", APP_VERSION);
+	System.out.println("Opciones: ");
+	System.out.println("(0) Mostrar Newsfeed");
+	System.out.println("(1) Mostrar Muro");
+	System.out.println("(2) Publicar Estado");
+	System.out.println("(3) Modificar Parámetros");
+	System.out.println("(4) Mostrar Log");
+	System.out.println("(5) Salir");
+	System.out.println("\nPor favor ingrese una opcion: ");
+	int seleccion;
+	seleccion = scanner.nextInt();
+	scanner.nextLine();
+	
+	switch(seleccion){
+	
+	case 0://Mostrar NewsFeed
+		System.out.println("Mostrando NewsFeed...");
+		ResponseList<Post> feed = facebook.getFeed();
+		for(int i=0;i<feed.size();i++){
+		    System.out.println("------------------------------------------------------------");
+		    if(feed.get(i).getCaption()!=null)System.out.println("Caption: " + feed.get(i).getCaption());
+		    if(feed.get(i).getDescription()!=null)System.out.println("Description" + feed.get(i).getDescription());
+		    if(feed.get(i).getStory()!=null)System.out.println("Story: " + feed.get(i).getStory());
+		    if(feed.get(i).getName()!=null)System.out.println("Name: " + feed.get(i).getName());
+		    if(feed.get(i).getMessage()!=null)System.out.println("Message: " + feed.get(i).getMessage());
+		    if(feed.get(i).getCreatedTime()!=null)System.out.println("Created Time: " + feed.get(i).getCreatedTime());
+		    if(feed.get(i).getPicture()!=null)System.out.println("Picture: " + feed.get(i).getPicture());
+		    if(feed.get(i).getFullPicture()!=null)System.out.println("Picture: " + feed.get(i).getFullPicture());
+		    if(feed.get(i).getPermalinkUrl()!=null)System.out.println("PermaLink: " + feed.get(i).getPermalinkUrl());
+		    if(feed.get(i).getLink()!=null)System.out.println("Link: " + feed.get(i).getLink());
+		    System.out.println("------------------------------------------------------------");
+		}
+		break;
+	case 1://Mostrar Muro
+		System.out.println("Mostrando Muro...");
+		ResponseList<Post> wall = facebook.getPosts();
+		for(int i=0;i<wall.size();i++){
+		    System.out.println("------------------------------------------------------------");
+		    if(wall.get(i).getCaption()!=null)System.out.println("Caption: " + wall.get(i).getCaption());
+		    if(wall.get(i).getDescription()!=null)System.out.println("Description" + wall.get(i).getDescription());
+		    if(wall.get(i).getStory()!=null)System.out.println("Story: " + wall.get(i).getStory());
+		    if(wall.get(i).getName()!=null)System.out.println("Name: " + wall.get(i).getName());
+		    if(wall.get(i).getMessage()!=null)System.out.println("Message: " + wall.get(i).getMessage());
+		    if(wall.get(i).getCreatedTime()!=null)System.out.println("Created Time: " + wall.get(i).getCreatedTime());
+		    if(wall.get(i).getPicture()!=null)System.out.println("Picture: " + wall.get(i).getPicture());
+		    if(wall.get(i).getFullPicture()!=null)System.out.println("Picture: " + wall.get(i).getFullPicture());
+		    if(wall.get(i).getPermalinkUrl()!=null)System.out.println("PermaLink: " + wall.get(i).getPermalinkUrl());
+		    if(wall.get(i).getLink()!=null)System.out.println("Link: " + wall.get(i).getLink());
+		    System.out.println("------------------------------------------------------------");
+		} 
+		break;
+	case 2://Publicar Estado o link
+		System.out.println("Desea publicar un estado o un link?");
+		System.out.println("Opciones: ");
+		System.out.println("(0) Estado");
+		System.out.println("(1) Link");
+		int seleccion2;
+		seleccion2 = scanner.nextInt();
+		scanner.nextLine();
+		switch(seleccion2){
+		case 0://Publicar Estado
+			System.out.println("En qué estas pensando?");
+			String estado = scanner.nextLine();
+			System.out.println("Publicando...");
+			facebook.postStatusMessage(estado);
+			System.out.println("Publicación subida correctamente.");
+			break;
+		case 1://Publicar Link
+			System.out.println("Escribe la URL: ");
+			String url = scanner.nextLine();
+			System.out.println("Leyenda: ");
+			String leyend = scanner.nextLine();
+			//http://facebook4j.org
+			//A Java library for the Facebook Graph API
+			System.out.println("Publicando...");
+			try {
+				facebook.postLink(new URL(url), leyend);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+			System.out.println("Publicación subida correctamente.");
+			break;
+			default:logger.error("Opcion invalida");
+				break;
+		}
+		break;
+	case 3://Modificar Parámetros
+		break;
+	case 4://Mostrar Log
+		break;
+	case 5://Salir
+		break;
+	default:
+		logger.error("Opcion invalida");
+		break;
+	}
+		
+		
     /*
     //Publicar Estado
     facebook.postStatusMessage("Hello World from Facebook4J2!");
@@ -77,7 +164,7 @@ public class Main {
 	}*/
 	
 	//Mostrar Wall
-	ResponseList<Post> wall = facebook.getPosts();
+	/*ResponseList<Post> wall = facebook.getPosts();
 	for(int i=0;i<wall.size();i++){
 	    System.out.println("------------------------------------------------------------");
 	    if(wall.get(i).getCaption()!=null)System.out.println("Caption: " + wall.get(i).getCaption());
@@ -91,26 +178,28 @@ public class Main {
 	    if(wall.get(i).getPermalinkUrl()!=null)System.out.println("PermaLink: " + wall.get(i).getPermalinkUrl());
 	    if(wall.get(i).getLink()!=null)System.out.println("Link: " + wall.get(i).getLink());
 	    System.out.println("------------------------------------------------------------");
-	} 
+	} */
 	
 	
 	//Mostrar Feed
-	ResponseList<Post> feed = facebook.getFeed();
+	/*ResponseList<Post> feed = facebook.getFeed();
 	for(int i=0;i<feed.size();i++){
-	    System.out.println(feed.get(i));
-	} 
+	    System.out.println("------------------------------------------------------------");
+	    if(feed.get(i).getCaption()!=null)System.out.println("Caption: " + feed.get(i).getCaption());
+	    if(feed.get(i).getDescription()!=null)System.out.println("Description" + feed.get(i).getDescription());
+	    if(feed.get(i).getStory()!=null)System.out.println("Story: " + feed.get(i).getStory());
+	    if(feed.get(i).getName()!=null)System.out.println("Name: " + feed.get(i).getName());
+	    if(feed.get(i).getMessage()!=null)System.out.println("Message: " + feed.get(i).getMessage());
+	    if(feed.get(i).getCreatedTime()!=null)System.out.println("Created Time: " + feed.get(i).getCreatedTime());
+	    if(feed.get(i).getPicture()!=null)System.out.println("Picture: " + feed.get(i).getPicture());
+	    if(feed.get(i).getFullPicture()!=null)System.out.println("Picture: " + feed.get(i).getFullPicture());
+	    if(feed.get(i).getPermalinkUrl()!=null)System.out.println("PermaLink: " + feed.get(i).getPermalinkUrl());
+	    if(feed.get(i).getLink()!=null)System.out.println("Link: " + feed.get(i).getLink());
+	    System.out.println("------------------------------------------------------------");
+	}*/
 	//feed.forEach(System.out::println);
+    }
 	
-    /*If your app requests this permission Facebook will have to review how
-     *  your app uses it.
-        Limited Use
-This permission is granted to apps building a Facebook-branded client on 
-platforms where Facebook is not already available. For example, Android and iOS
- apps will not be approved for this permission. In addition, Web, Desktop, in-car
-  and TV apps will not be granted this permission.*/
-	
-
->>>>>>> refs/heads/mostrar_muro
 
 }
 }
