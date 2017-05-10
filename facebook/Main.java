@@ -69,6 +69,10 @@ public class Main {
 	switch(seleccion){
 	
 	case 0://Mostrar NewsFeed
+<<<<<<< HEAD
+=======
+		logger.info("Elección Mostrar NewsFeed.");
+>>>>>>> refs/heads/mostrar_log
 		System.out.println("Mostrando NewsFeed...");
 		ResponseList<Post> feed = facebook.getFeed();
 		for(int i=0;i<feed.size();i++){
@@ -85,8 +89,15 @@ public class Main {
 		    if(feed.get(i).getLink()!=null)System.out.println("Link: " + feed.get(i).getLink());
 		    System.out.println("------------------------------------------------------------");
 		}
+<<<<<<< HEAD
 		break;
 	case 1://Mostrar Muro
+=======
+		logger.info("Se desplegó el newsfeed.");
+		break;
+	case 1://Mostrar Muro
+		logger.info("Elección Mostrar Muro.");
+>>>>>>> refs/heads/mostrar_log
 		System.out.println("Mostrando Muro...");
 		ResponseList<Post> wall = facebook.getPosts();
 		for(int i=0;i<wall.size();i++){
@@ -103,8 +114,15 @@ public class Main {
 		    if(wall.get(i).getLink()!=null)System.out.println("Link: " + wall.get(i).getLink());
 		    System.out.println("------------------------------------------------------------");
 		} 
+<<<<<<< HEAD
 		break;
 	case 2://Publicar Estado o link
+=======
+		logger.info("Se despliegó el muro.");
+		break;
+	case 2://Publicar Estado o link
+		logger.info("Elección Publicar Estado o Link");
+>>>>>>> refs/heads/mostrar_log
 		System.out.println("Desea publicar un estado o un link?");
 		System.out.println("Opciones: ");
 		System.out.println("(0) Estado");
@@ -114,13 +132,24 @@ public class Main {
 		scanner.nextLine();
 		switch(seleccion2){
 		case 0://Publicar Estado
+<<<<<<< HEAD
+=======
+			logger.info("Elección Publicar Estado.");
+>>>>>>> refs/heads/mostrar_log
 			System.out.println("En qué estas pensando?");
 			String estado = scanner.nextLine();
 			System.out.println("Publicando...");
 			facebook.postStatusMessage(estado);
 			System.out.println("Publicación subida correctamente.");
+<<<<<<< HEAD
 			break;
 		case 1://Publicar Link
+=======
+			logger.info("Publicación Subida");
+			break;
+		case 1://Publicar Link
+			logger.info("Elección Publicar Link");
+>>>>>>> refs/heads/mostrar_log
 			System.out.println("Escribe la URL: ");
 			String url = scanner.nextLine();
 			System.out.println("Leyenda: ");
@@ -134,12 +163,20 @@ public class Main {
 				e.printStackTrace();
 			}
 			System.out.println("Publicación subida correctamente.");
+<<<<<<< HEAD
 			break;
 			default:logger.error("Opcion invalida");
+=======
+			logger.info("Link Publicado");
+			break;
+			default:logger.error("Opcion invalida");
+			logger.info("Opción Inválida");
+>>>>>>> refs/heads/mostrar_log
 				break;
 		}
 		break;
 	case 3://Modificar Parámetros
+<<<<<<< HEAD
 		break;
 	case 4://Mostrar Log
 		break;
@@ -147,6 +184,22 @@ public class Main {
 		break;
 	default:
 		logger.error("Opcion invalida");
+=======
+		logger.info("Elección modificación de parámetros");
+	    
+		break;
+	case 4://Mostrar Log
+		logger.info("Elección Mostrar Log");
+		break;
+	case 5://Salir
+		logger.info("Salir del programa.");
+		System.out.println("Adiós!.");
+		System.exit(0);
+		break;
+	default:
+		logger.error("Opcion invalida");
+		logger.info("Opción Inválida");
+>>>>>>> refs/heads/mostrar_log
 		break;
 	}
 		
