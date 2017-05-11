@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.NoSuchFileException;
@@ -37,7 +38,7 @@ public class Main {
 	static String appID = "1002889223176023";
 	static String appSecret = "bd66801e7a57990f084537b2e97d394f";
     
-	public static void main(String[] args) throws FacebookException {
+	public static void main(String[] args) throws FacebookException, FileNotFoundException, UnsupportedEncodingException {
 	/*
 	 Mostrar Log
 	 Mostrar NewsFeed--
@@ -58,6 +59,7 @@ public class Main {
 
     while(true){
     System.out.format("Simple Facebook client %s\n\n", APP_VERSION);
+    System.out.println("Recuerde ingresar un AccessToken Vigente");
 	System.out.println("Opciones: ");
 	System.out.println("(0) Mostrar Newsfeed");
 	System.out.println("(1) Mostrar Muro");
@@ -72,7 +74,6 @@ public class Main {
 	scanner.nextLine();
 	
 	switch(seleccion){
-	
 	case 0://Mostrar NewsFeed
 		logger.info("Elección Mostrar NewsFeed.");
 		System.out.println("Mostrando NewsFeed...");
@@ -96,10 +97,8 @@ public class Main {
 		System.out.println("(0) Si");
 		System.out.println("(1) No");
 		int resp = scanner.nextInt();
-		switch(resp){
-		case 0:
-			try{
-			    PrintWriter writer = new PrintWriter("newsfeed.txt", "UTF-8");
+		if(resp==0){
+		 PrintWriter writer = new PrintWriter("newsfeed.txt", "UTF-8");
 				for(int i=0;i<feed.size();i++){
 				    writer.println("------------------------------------------------------------");
 				    if(feed.get(i).getCaption()!=null)writer.println("Caption: " + feed.get(i).getCaption());
@@ -113,18 +112,9 @@ public class Main {
 				    if(feed.get(i).getPermalinkUrl()!=null)writer.println("PermaLink: " + feed.get(i).getPermalinkUrl());
 				    if(feed.get(i).getLink()!=null)writer.println("Link: " + feed.get(i).getLink());
 				    writer.println("------------------------------------------------------------");
-				}
+		} writer.close();
 				System.out.println("Se guardaron los resultados exitosamente.");
-			    writer.close();
-			} catch (IOException e) {
-			   // do something
-			}
-			break;
-		case 1:
-			break;
-			default:
-				break;
-		}
+				}else{}
 		break;
 	case 1://Mostrar Muro
 		logger.info("Elección Mostrar Muro.");
@@ -149,9 +139,8 @@ public class Main {
 		System.out.println("(0) Si");
 		System.out.println("(1) No");
 		int resp2 = scanner.nextInt();
-		switch(resp2){
-		case 0:
-			try{
+		if(resp2==0){
+		try{
 			    PrintWriter writer = new PrintWriter("wall.txt", "UTF-8");
 				for(int i=0;i<wall.size();i++){
 				    writer.println("------------------------------------------------------------");
@@ -172,6 +161,7 @@ public class Main {
 			} catch (IOException e) {
 			   // do something
 			}
+		}else{}
 		break;
 	case 2://Publicar Estado o link
 		logger.info("Elección Publicar Estado o Link");
@@ -278,6 +268,7 @@ public class Main {
 		logger.info("Opción Inválida");
 		break;
 	}
+	}
 		
 		
     /*
@@ -328,10 +319,8 @@ public class Main {
 	}*/
 	//feed.forEach(System.out::println);
     }
-	
+}
 
-}
-}
-	}
+	
 
 
